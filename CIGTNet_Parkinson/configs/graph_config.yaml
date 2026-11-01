@@ -1,0 +1,229 @@
+graph_version: '1.0'
+nodes:
+  Trunk:
+    id: 0
+    features:
+    - lin__CoM AP
+    - lin__Vertical
+    - lin__ML
+    - lin__CLAV AP
+    - lin__Vertical.1
+    - lin__ML.1
+    - lin__STRN AP
+    - lin__Vertical.2
+    - lin__ML.2
+    - lin__C7 AP
+    - lin__Vertical.3
+    - lin__ML.3
+    - lin__T10 AP
+    - lin__Vertical.4
+    - lin__ML.4
+    - ang__Trunk Lateral Flexion
+    - ang__Trunk Rotation
+    - ang__Trunk Flx/Extension
+    feature_count: 18
+  Right_Arm:
+    id: 1
+    features:
+    - lin__RSHO AP
+    - lin__Vertical.5
+    - lin__ML.5
+    - lin__RUPA AP
+    - lin__Vertical.7
+    - lin__ML.7
+    - lin__REL AP
+    - lin__Vertical.8
+    - lin__ML.8
+    - lin__REM AP
+    - lin__Vertical.9
+    - lin__ML.9
+    - lin__RFRA AP
+    - lin__Vertical.10
+    - lin__ML.10
+    - lin__RWL AP
+    - lin__Vertical.11
+    - lin__ML.11
+    - lin__RWM AP
+    - lin__Vertical.12
+    - lin__ML.12
+    - ang__Right Shoulder Add/Abduction
+    - ang__Shoulder Int/External Rotation.1
+    - ang__Shoulder Flx/Extension.1
+    - ang__Right Elbow Add/Abduction
+    - ang__Elbow Pron/Supination.1
+    - ang__Elbow Flx/Extension.1
+    feature_count: 27
+  Left_Arm:
+    id: 2
+    features:
+    - lin__LSHO AP
+    - lin__Vertical.6
+    - lin__ML.6
+    - lin__LUPA AP
+    - lin__Vertical.13
+    - lin__ML.13
+    - lin__LEL AP
+    - lin__Vertical.14
+    - lin__ML.14
+    - lin__LEM AP
+    - lin__Vertical.15
+    - lin__ML.15
+    - lin__LFRA AP
+    - lin__Vertical.16
+    - lin__ML.16
+    - lin__LWL AP
+    - lin__Vertical.17
+    - lin__ML.17
+    - lin__LWM AP
+    - lin__Vertical.18
+    - lin__ML.18
+    - ang__Left Shoulder Add/Abduction
+    - ang__Shoulder Int/External Rotation
+    - ang__Shoulder Flx/Extension
+    - ang__Left Elbow Add/Abduction
+    - ang__Elbow Pron/Supination
+    - ang__Elbow Flx/Extension
+    feature_count: 27
+  Pelvis:
+    id: 3
+    features:
+    - lin__R.ASIS AP
+    - lin__Vertical.19
+    - lin__ML.19
+    - lin__L.ASIS AP
+    - lin__Vertical.20
+    - lin__ML.20
+    - lin__R.PSIS AP
+    - lin__Vertical.21
+    - lin__ML.21
+    - lin__L.PSIS AP
+    - lin__Vertical.22
+    - lin__ML.22
+    - ang__Left Pelvic Obliquity
+    - ang__Pelvic Rotation
+    - ang__Pelvic Tilt
+    - ang__Right Pelvic Obliquity
+    - ang__Pelvic Rotation.1
+    - ang__Pelvic Tilt.1
+    feature_count: 18
+  Right_Leg:
+    id: 4
+    features:
+    - lin__R.GTR AP
+    - lin__Vertical.23
+    - lin__ML.23
+    - lin__R.Knee AP
+    - lin__Vertical.24
+    - lin__ML.24
+    - lin__R.HF AP
+    - lin__Vertical.25
+    - lin__ML.25
+    - lin__R.TT AP
+    - lin__Vertical.26
+    - lin__ML.26
+    - lin__R.Knee.Medial AP
+    - lin__Vertical.39
+    - lin__ML.39
+    - ang__Right Hip Add/Abduction
+    - ang__Hip Int/External Rotation.1
+    - ang__Hip Flexion/Extension.1
+    - ang__Right Knee Add/Abduction
+    - ang__Knee Int/External Rotation.1
+    - ang__Knee Flx/Extension.1
+    feature_count: 21
+  Left_Leg:
+    id: 5
+    features:
+    - lin__L.GTR AP
+    - lin__Vertical.31
+    - lin__ML.31
+    - lin__L.Knee AP
+    - lin__Vertical.32
+    - lin__ML.32
+    - lin__L.HF AP
+    - lin__Vertical.33
+    - lin__ML.33
+    - lin__L.TT AP
+    - lin__Vertical.34
+    - lin__ML.34
+    - lin__L.Knee.Medial AP
+    - lin__Vertical.42
+    - lin__ML.42
+    - ang__Left Hip Add/Abduction
+    - ang__Hip Int/External Rotation
+    - ang__Hip Flexion/Extension
+    - ang__Left Knee Add/Abduction
+    - ang__Knee Int/External Rotation
+    - ang__Knee Flx/Extension
+    feature_count: 21
+  Right_Foot:
+    id: 6
+    features:
+    - lin__R.Ankle AP
+    - lin__Vertical.27
+    - lin__ML.27
+    - lin__R.Heel AP
+    - lin__Vertical.28
+    - lin__ML.28
+    - lin__R.MT1 AP
+    - lin__Vertical.29
+    - lin__ML.29
+    - lin__R.MT5 AP
+    - lin__Vertical.30
+    - lin__ML.30
+    - lin__R.Ankle.Medial AP
+    - lin__Vertical.40
+    - lin__ML.40
+    - lin__R.MT2 AP
+    - lin__Vertical.41
+    - lin__ML.41
+    - ang__Right Ankle Inv/Eversion
+    - ang__Ankle Add/Abduction.1
+    - ang__Ankle Dorsi/Plantarflexion.1
+    - ang__Right Foot Inv/Eversion
+    - ang__Foot Int/External Rotation.1
+    - ang__Foot DF/Plantarflexion.1
+    feature_count: 24
+  Left_Foot:
+    id: 7
+    features:
+    - lin__L.Ankle AP
+    - lin__Vertical.35
+    - lin__ML.35
+    - lin__L.Heel AP
+    - lin__Vertical.36
+    - lin__ML.36
+    - lin__L.MT1 AP
+    - lin__Vertical.37
+    - lin__ML.37
+    - lin__L.MT5 AP
+    - lin__Vertical.38
+    - lin__ML.38
+    - lin__L.Ankle.Medial AP
+    - lin__Vertical.43
+    - lin__ML.43
+    - lin__L.MT2 AP
+    - lin__Vertical.44
+    - lin__ML.44
+    - ang__Left Ankle Inv/Eversion
+    - ang__Ankle Add/Abduction
+    - ang__Ankle Dorsi/Plantarflexion
+    - ang__Left Foot Inv/Eversion
+    - ang__Foot Int/External Rotation
+    - ang__Foot DF/Plantarflexion
+    feature_count: 24
+edges:
+- - Trunk
+  - Pelvis
+- - Trunk
+  - Right_Arm
+- - Trunk
+  - Left_Arm
+- - Pelvis
+  - Right_Leg
+- - Pelvis
+  - Left_Leg
+- - Right_Leg
+  - Right_Foot
+- - Left_Leg
+  - Left_Foot

@@ -1,0 +1,34 @@
+model:
+  name: CIGT-Net
+  temporal_encoder:
+    type: bilstm
+    input_dim: 180
+    hidden_dim: 128
+    num_layers: 2
+    dropout: 0.3
+  graph_encoder:
+    type: gcn
+    node_embed_dim: 32
+    hidden_dim: 64
+    num_layers: 2
+    dropout: 0.2
+  cross_attention:
+    type: multihead
+    embed_dim: 128
+    num_heads: 4
+    dropout: 0.2
+  medication_conditioning:
+    enabled: true
+    embed_dim: 16
+  ordinal_head:
+    hidden_dims:
+    - 64
+    - 32
+    num_classes: 3
+    dropout: 0.2
+training:
+  lambda_ordinal: 1.0
+  lambda_aux: 0.0
+  optimizer: AdamW
+  lr: 0.001
+  weight_decay: 0.01

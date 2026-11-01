@@ -1,0 +1,37 @@
+# ==============================================================================
+# Master Configuration: Parkinson_Gait_CIGTNet
+# Clinically-Informed Multiscale Graph-Transformer Framework for Explainable
+# Parkinsonian Gait Severity Assessment
+# ==============================================================================
+
+project:
+  name: "Parkinson_Gait_CIGTNet"
+  version: "0.1.0-scaffold"
+  research_safety_notice: >
+    This software and research framework is intended solely for research-oriented
+    gait severity estimation and assessment. It does not provide medical diagnosis.
+
+paths:
+  raw_data_dir: "data/raw"
+  merged_data_dir: "data/merged"
+  cleaned_data_dir: "data/cleaned"
+  interim_data_dir: "data/interim"
+  processed_data_dir: "data/processed"
+  normalized_data_dir: "data/normalized"
+  sequences_data_dir: "data/sequences"
+  metadata_dir: "data/metadata"
+  checkpoints_dir: "checkpoints"
+  results_dir: "results"
+  figures_dir: "figures"
+  logs_dir: "logs"
+
+configs:
+  data: "configs/data_config.yaml"
+  model: "configs/model_config.yaml"
+  experiment: "configs/experiment_config.yaml"
+
+reproducibility:
+  global_seed: 42
+  deterministic: true
+  benchmark: false
+  device: "cuda" # 'cuda' if available else 'cpu'

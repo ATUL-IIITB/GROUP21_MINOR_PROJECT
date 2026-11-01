@@ -1,0 +1,132 @@
+# ==============================================================================
+# Model Architecture Configuration: CIGT-Net
+# Clinically-Informed Multiscale Graph-Transformer Framework
+# ==============================================================================
+
+input:
+  sequence_length: null # T frames (from data_config.yaml)
+  feature_dim: null # F channels (from data_config.yaml)
+  num_nodes: null # Number of anatomical body-segment graph nodes (Notebook 13)
+
+temporal_stream:
+  multiscale_conv:
+    enabled: true
+    kernel_sizes: [3, 5, 7] # Short, medium, long temporal receptive fields
+    out_channels: [64, 128, 256]
+    dropout: 0.1
+  temporal_transformer:
+    d_model: 256
+    nhead: 8
+    num_encoder_layers: 4
+    dim_feedforward: 1024
+    dropout: 0.1
+    activation: "gelu"
+
+graph_stream:
+  biomechanical_graph:
+    adjacency_matrix_path: "data/metadata/biomechanical_graph.pt"
+    anatomical_edges: true
+    bilateral_symmetry_edges: true
+    adaptive_graph: true
+    learnable_temperature: 1.0
+    top_k_adaptive: null # TODO: Define sparsity constraints
+  graph_transformer:
+    d_model: 256
+    nhead: 8
+    num_layers: 4
+    dim_feedforward: 1024
+    dropout: 0.1
+
+cross_attention_fusion:
+  d_model: 256
+  nhead: 8
+  dropout: 0.1
+  fusion_direction: "bidirectional" # Temporal <-> Graph
+
+medication_aware:
+  enabled: true
+  num_conditions: 2 # 0: OFF, 1: ON
+  embedding_dim: 64
+  conditioning_method: "cross_attention" # Options: 'cross_attention', 'film', 'concat'
+
+prediction_heads:
+  ordinal_severity:
+    enabled: true
+    num_classes: null # TODO: Set based on clinical severity scale (e.g. 0-4)
+    loss_type: "coral" # CORAL / Ordinal Cross Entropy
+  continuous_severity:
+    enabled: true
+    loss_type: "smooth_l1" # or 'mse'
+  auxiliary_tasks:
+    enabled: false # Optional auxiliary clinical metadata prediction
+    tasks: []
+
+baselines:
+  cnn_1d:
+    num_layers: 3
+    channels: [64, 128, 256]
+  lstm:
+    hidden_dim: 128
+    num_layers: 2
+    bidirectional: false
+  bilstm:
+    hidden_dim: 128
+    num_layers: 2
+    bidirectional: true
+  cnn_bilstm:
+    cnn_channels: 64
+    lstm_hidden: 128
+    bidirectional: true
+
+
+# --- Part 6 Engineering Implementation Choice ---
+temporal:
+  input_features: 180
+  sequence_length: 751
+  model_dim: 128
+  short_kernel: 3
+  medium_kernel: 9
+  long_kernel: 15
+  branch_dim: 64
+  num_temporal_layers: 2
+  num_attention_heads: 4
+  feedforward_dim: 256
+  dropout: 0.1
+  pooling: mean
+  positional_encoding: true
+
+# --- Part 7 Engineering Implementation Choice ---
+graph:
+  self_loops: false
+  anatomical_weight: 1.0
+  symmetry_weight: 1.0
+  normalization: "symmetric"
+  adaptive_method: "correlation"
+  adaptive_top_k: 5
+  adaptive_similarity: "absolute_pearson"
+  adaptive_fold_specific: true
+
+
+# --- Part 8 Engineering Implementation Choice ---
+graph_transformer:
+  input_dim: 3
+  d_model: 64
+  nhead: 4
+  num_layers: 2
+  dim_feedforward: 128
+  dropout: 0.1
+  structural_bias: "additive"
+
+
+# --- Part 9 / Notebook 15 Engineering Implementation Choice ---
+fusion:
+  temporal_dim: 128
+  graph_dim: 64
+  fusion_dim: 128
+  num_attention_heads: 4
+  attention_dropout: 0.1
+  dropout: 0.1
+  graph_pooling: "mean"
+  use_residual: true
+  normalization: "layer_norm"
+

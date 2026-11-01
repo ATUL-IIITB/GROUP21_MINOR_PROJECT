@@ -1,0 +1,58 @@
+raw_dataset:
+  source_dir: data/raw
+  total_features: 180
+  sampling_rate_hz: 150
+  c3d_subdir: C3Dfiles
+  gait_cycles_subdir: Gait cycles
+  clinical_metadata_file: PDGinfo.xlsx
+file_matching:
+  linear_stream_pattern: '{subject_id}_{medication_condition}_walk_{trial_id}_linear_kinematics.csv'
+  angular_stream_pattern: '{subject_id}_{medication_condition}_walk_{trial_id}_angular_kinematics.csv'
+  match_keys:
+  - subject_id
+  - medication_condition
+  - trial_id
+merging:
+  time_abs_tolerance: 0.0001
+  grid_dt_rel_tolerance: 0.001
+  grid_dt_abs_tolerance: 1.0e-06
+missing_data:
+  max_interpolation_gap_frames: 5
+  severe_missing_threshold_ratio: 0.2
+  interpolation_method: linear
+normalization:
+  sequence_normalization:
+    target_length: 751
+    method: gsn
+    gsn:
+      target_length: 751
+      method: repetition_with_remainder_and_truncation
+    tbsn:
+      target_length: 751
+      method: trend_based_extrapolation
+scaling:
+  method: zscore
+  channel_wise: true
+  fit_on_train_only: true
+windowing:
+  window_size: 751
+  stride: 751
+  overlap_ratio: null
+  incomplete_window_policy: reject_complete_only
+  single_window_per_trial: true
+  historical_report_reference: 751-frame input length is report-supported; stride=751
+    is a derived implementation setting chosen to preserve one complete non-overlapping
+    trial window.
+labels:
+  target_severity_col: null
+  primary_ordinal_target: updrs_iii_walking
+  primary_ordinal_source_col_on: ON - UPDRS-III - walking
+  primary_ordinal_source_col_off: OFF - UPDRS-III - walking
+  primary_ordinal_classes:
+  - 0
+  - 1
+  - 2
+  secondary_ordinal_target: hoehn_yahr
+  secondary_continuous_target: updrs_iii_total
+  missing_label_policy: retain_with_nan_flag
+  clinical_source_file: data/raw/PDGinfo.xlsx
